@@ -1,0 +1,30 @@
+{
+  "name": "crs",
+  "version": "1.0.0",
+  "description": "Central Reservation System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Motawala/crs.git"
+  },
+  "keywords": [
+    "KP",
+    "CRS"
+  ],
+  "author": "KP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Motawala/crs/issues"
+  },
+  "homepage": "https://github.com/Motawala/crs#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
