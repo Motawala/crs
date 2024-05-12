@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Register Property</title>
+    <script type="module" src="/js/register.js"></script>
+    <link rel = "stylesheet" href = "/css/register.css">
+</head>
+<body>
+    <div id="root-container">
+        <div id="main-container">
+            <h1 id="detail-header">Property Details</h1>
+            <div id="property-detail-div" class="w3-container w3-center w3-animate-right">
+                <p id="detail-p">Property Name</p>
+                <input id="property-name" class="detail-input" placeholder="Property Name*" class="name-input" required>
+                <p id="detail-p">Property ID</p>
+                <input id="property-ID" class="detail-input" placeholder="Property ID*" class="id-input" required>
+                <p id="detail-p">Property Email</p>
+                <input id="property-email" class="detail-input" placeholder="Property Email*" class="email-input" required>
+                <p id="detail-p">Property Address</p>
+                <input id="property-ad1" class="ad1-input" placeholder="Address Line 1*" class="address-input" required><br>
+                <input id="property-ad2" class="ad1-input" placeholder="Address Line 2" class="address-input" required><br>
+                <input id="property-city" class="state-input" placeholder="City*" class="address-input" required>
+                <input id="property-state" class="state-input" placeholder="State*" class="address-input" required>
+                <input id="property-zip" class="state-input" placeholder="Zip Code*" class="address-input" required><br>
+                <button class="next-button" id="next-button">Next</button>
+            </div>
+            <div id="room-details" class="w3-container w3-center w3-animate-right">
+                <a id="previous-button" href="#" class="previous">&laquo; Previous</a>
+                <p id="detail-p">Number of Rooms</p>
+                <input id="no-of-rooms" class="detail-input2" placeholder="#" class="name-input" required>
+                <p id="detail-p">Number of Room Types</p>
+                <input id="room-types" class="detail-input2" placeholder="#" class="name-input" required><br>
+                <button class="next-button" id="next-button2">Next</button>
+            </div>
+            <div id="room-input">
+                <p style="align-self:center; color:rgb(36, 136, 36);">Enter Room Details</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+body{
+    background-color: rgb(168, 3, 3);
+}
+
+#root-container{
+    top: 50px;
+    width: 100vi;
+    height: 47vi;
+    margin: auto;
+}
+
+#main-container{
+    background-color: whitesmoke;
+    position: relative;
+    height: 70%;
+    width: 30%;
+    margin: auto;
+    border-radius: 10px;
+    border: 2px solid gray;
+    top: 100px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#crs-logo{
+    position: relative;
+    height: 45%;
+    width: 50%;
+    margin: auto;
+}
+
+#crs-para{
+    font-size: 40px;
+    color: rgb(80, 49, 4);
+    font-weight: bold;
+    font-family: Impact, fantasy;
+    font-style: italic;
+}
+
+#button-div{
+    position: relative;
+    height: 45%;
+    width: 70%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.register-button{
+    margin: 15px;
+    position: relative;
+    height: 25%;
+    width: 60%;
+    border-radius: 5px;
+    background-color: rgb(36, 136, 36);
+    font-weight: bold;
+    color: whitesmoke;
+    font-size: 22px;
+    font-family: Trebuchet MS, sans-serif;
+    font-style: italic;
+}
+
+.register-button:hover{
+    background-color: rgb(30, 71, 30);
+}
