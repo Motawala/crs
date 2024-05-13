@@ -18,3 +18,8 @@ const signIn = document.getElementById("sign-in")
 signIn.addEventListener('click', function(){
   redirect_page("/signIn")
 })
+
+const createAccount = document.getElementById('create-account');
+createAccount.addEventListener('click', function(){
+  redirect_page("/createAccount")
+})
