@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 const bodyParser = require('body-parser');
-
+const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
 var fs = require('fs')
 
 var con = mysql.createConnection({
@@ -11,7 +11,12 @@ var con = mysql.createConnection({
   
 con.connect(function(err) {
     if (err) throw err;
-    console.log("MySQL Connected!");
+    const log = timestamp + "MySQL Database Connected!\n"
+    fs.writeFile("database.log", log, { flag: 'a' }, function(err) {
+        if (err) {
+            console.error("Error writing to log file: ", err);
+        }
+    });
 });
 
 const writeJSON = async (req, res) =>{
@@ -23,6 +28,12 @@ const writeJSON = async (req, res) =>{
                 console.error('Error writing JSON file:', err);
             } else {
                 console.log('JSON file has been saved.');
+                const log = timestamp + " JSON file for " + jsonData["data"]['Property ID'] + " created.\n"
+                fs.writeFile("database.log", log, { flag: 'a' }, function(err) {
+                    if (err) {
+                        console.error("Error writing to log file: ", err);
+                    }
+                });
             }
         
         })
@@ -47,13 +58,42 @@ const createDB = async (req, res) =>{
         const jsonData = req.body
         const dbName =  "CREATE DATABASE " +  jsonData["data"]['Property ID']
         const sqlQuery = dbName;
+        const useQuery = "USE properties";
+        const insertPropertyID = "INSERT INTO property_ID (propertyID) VALUES (?);"
+        const propertyID = jsonData["data"]['Property ID'];
         con.query(sqlQuery, function(err, result){
             if (err){
                 console.error("Error Creating the Database, Req made: ", err)
             }else{
-                console.log("Database created " + jsonData["data"]['Property ID']);
+                con.query(useQuery, function(err, result){
+                    if(err){
+                        console.error("Error Using the Database, Req made: ", err)
+                    }else{
+                        const log = timestamp +" Using Database properties.\n"
+                        fs.writeFile("database.log", log, { flag: 'a' }, function(err) {
+                            if (err) {
+                                console.error("Error writing to log file: ", err);
+                            }
+                        });
+                    }
+                })
+                con.query(insertPropertyID, [propertyID], function(err, result){
+                    if(err){
+                        console.error("Error inserting the property id into the database, Req made: ", err)
+                    }else{
+                        const log = timestamp + " Property ID stored in Properties table Successfully.\n"
+                        fs.writeFile("database.log", log, { flag: 'a' }, function(err) {
+                            if (err) {
+                                console.error("Error writing to log file: ", err);
+                            }
+                        });
+                    }
+                })
             }
         })
+
+       
+
         return res.status(200).json({
             success: true,
             message: "Database " + dbName + " create successfully!"
@@ -66,4 +106,28 @@ const createDB = async (req, res) =>{
     }
 }
 
-module.exports = {writeJSON, createDB}
+
+const validatePropertyID = async (req, res) =>{
+    try{
+        const propertyID = req.body
+        const filename = propertyID + ".json"
+        fs.readdir(filename, (err, result) =>{
+            if(err){
+                console.error("File not found", err)
+            }else{
+                console.log("File Found")
+            }
+        })
+        return res.status(200).json({
+            success: true,
+            message: "File Found in the Directory"
+        })
+    }catch(error){
+        return res.status(500).json({
+            success: false,
+            message: "Error finding the file, server"
+        })
+    }
+}
+
+module.exports = {writeJSON, createDB, validatePropertyID}

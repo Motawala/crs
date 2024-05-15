@@ -6,9 +6,27 @@
     <title>Create Account</title>
     <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
+    <script type="module" src="/js/createAccount.js"></script>
+    <link rel = "stylesheet" href = "/css/createAccount.css">
 </head>
 <body>
     <div id="root-container">
+        <div id="main-container">
+            <img id="crs-logo" src="/Images/KPs logo.png"></img>
+            <div id="input-container">
+                <p id="detail-p">Property ID</p>
+                <input id="property-id" class="detail-input" placeholder="Property ID*" type="id" required>
+                <p id="detail-p">Username</p>
+                <input id="Username" class="detail-input" placeholder="Username*" type="username" required>
+                <p id="detail-p">Email</p>
+                <input id="email" class="detail-input" placeholder="Email*" type="email" required>
+                <p id="detail-p">Password</p>
+                <input id="password" class="detail-input" placeholder="Password*" type="password" required>
+                <p id="detail-p">Confirm Password</p>
+                <input id="confirm-password" class="detail-input" placeholder="Confirm Password*" type="password" required>
+                <button class="create-button" id="create-button">Create Account</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>
