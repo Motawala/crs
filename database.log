@@ -1,8 +1,128 @@
-2024-05-15 03:29:29 Using Database properties.
-2024-05-15 03:29:29 Property ID stored in Properties Successfully.
-2024-05-15 03:32:28 Using Database properties.
-2024-05-15 03:32:28 Property ID stored in Properties table Successfully.
-2024-05-15 03:33:06 JSON file for KP45193 created.
-2024-05-15 03:33:06 Using Database properties.
-2024-05-15 03:33:06 Property ID stored in Properties table Successfully.
-2024-05-15 03:35:48MySQL Database Connected!
+2024-05-18 01:57:08 MySQL Database Connected!
+2024-05-18 01:57:53 MySQL Database Connected!
+2024-05-18 01:58:08 MySQL Database Connected!
+2024-05-18 01:58:31 MySQL Database Connected!
+2024-05-18 01:59:05 MySQL Database Connected!
+2024-05-18 01:59:09 MySQL Database Connected!
+2024-05-18 01:59:19 MySQL Database Connected!
+2024-05-18 01:59:58 MySQL Database Connected!
+2024-05-18 02:00:20 MySQL Database Connected!
+2024-05-18 02:01:08 MySQL Database Connected!
+2024-05-18 02:01:21 MySQL Database Connected!
+2024-05-18 02:01:22 MySQL Database Connected!
+2024-05-18 02:01:22 Using Properties.
+2024-05-18 02:01:22 Found the Database KPO.
+2024-05-18 02:02:02 MySQL Database Connected!
+2024-05-18 02:02:11 MySQL Database Connected!
+2024-05-18 02:03:03 MySQL Database Connected!
+2024-05-18 02:03:03 Using Properties.
+2024-05-18 02:03:03 Found the Database KPO.
+2024-05-18 02:05:16 MySQL Database Connected!
+2024-05-18 02:05:16 Using Properties.
+2024-05-18 02:05:16 Found the Database KPO.
+2024-05-18 02:05:41 MySQL Database Connected!
+2024-05-18 02:05:53 MySQL Database Connected!
+2024-05-18 02:06:05 MySQL Database Connected!
+2024-05-18 02:06:17 MySQL Database Connected!
+2024-05-18 02:06:24 MySQL Database Connected!
+2024-05-18 02:06:30 MySQL Database Connected!
+2024-05-18 02:06:32 MySQL Database Connected!
+2024-05-18 02:06:35 MySQL Database Connected!
+2024-05-18 02:06:38 MySQL Database Connected!
+2024-05-18 02:06:38 Using Properties.
+2024-05-18 02:06:38 Found the Database KP45193.
+2024-05-18 02:07:29 MySQL Database Connected!
+2024-05-18 02:07:35 MySQL Database Connected!
+2024-05-18 02:07:35 Using Properties.
+2024-05-18 02:07:35 Found the Database KP45193.
+2024-05-18 02:08:07 MySQL Database Connected!
+2024-05-18 02:08:07 Using Properties.
+2024-05-18 02:08:07 Found the Database KP45193.
+2024-05-18 02:08:13 MySQL Database Connected!
+2024-05-18 02:08:20 MySQL Database Connected!
+2024-05-18 02:08:20 Using Properties.
+2024-05-18 02:08:20 Found the Database KP45193.
+2024-05-18 02:08:34 MySQL Database Connected!
+2024-05-18 02:08:38 MySQL Database Connected!
+2024-05-18 02:08:38 Using Properties.
+2024-05-18 02:08:38 Found the Database KP45193.
+2024-05-18 02:09:03 MySQL Database Connected!
+2024-05-18 02:09:03 Using Properties.
+2024-05-18 02:09:03 Found the Database KP45193.
+2024-05-18 02:09:03 Using Properties.
+2024-05-18 02:09:03 Found the Database KP45193.
+2024-05-18 02:10:00 MySQL Database Connected!
+2024-05-18 02:10:05 MySQL Database Connected!
+2024-05-18 02:12:16 MySQL Database Connected!
+2024-05-18 02:12:16 Using Properties.
+2024-05-18 02:12:16 Found the Database KP45193.
+2024-05-18 02:12:16 Using Properties.
+2024-05-18 02:12:16 Found the Database KP45193.
+2024-05-18 02:14:43 MySQL Database Connected!
+2024-05-18 02:14:47 MySQL Database Connected!
+2024-05-18 02:15:05 MySQL Database Connected!
+2024-05-18 02:15:29 MySQL Database Connected!
+2024-05-18 02:15:51 MySQL Database Connected!
+2024-05-18 02:16:15 MySQL Database Connected!
+2024-05-18 02:16:42 MySQL Database Connected!
+2024-05-18 02:17:10 MySQL Database Connected!
+2024-05-18 02:17:102024-05-18 02:17:10 Data Inserted to table KP45193 .
+2024-05-18 02:17:38 MySQL Database Connected!
+2024-05-18 02:17:38 Using Properties.
+2024-05-18 02:17:38 Found the Database KP45193.
+2024-05-18 02:17:382024-05-18 02:17:38 Data Inserted to table KP45193.
+2024-05-18 02:18:31 MySQL Database Connected!
+2024-05-18 02:18:45 MySQL Database Connected!
+2024-05-18 02:18:50 MySQL Database Connected!
+2024-05-18 02:18:54 MySQL Database Connected!
+2024-05-18 02:19:56 MySQL Database Connected!
+2024-05-18 02:19:57 MySQL Database Connected!
+2024-05-18 02:20:24 MySQL Database Connected!
+2024-05-18 02:20:24 Using Properties.
+2024-05-18 02:20:24 Found the Database KP45193.
+2024-05-18 02:20:24 Using Properties.
+2024-05-18 02:20:24 Found the Database KP45193.
+2024-05-18 02:21:19 MySQL Database Connected!
+2024-05-18 02:21:19 Using Properties.
+2024-05-18 02:21:19 Found the Database KP45193.
+2024-05-18 02:21:35 MySQL Database Connected!
+2024-05-18 02:21:39 MySQL Database Connected!
+2024-05-18 02:21:39 Using Properties.
+2024-05-18 02:21:39 Found the Database KP45193.
+2024-05-18 02:21:40 User Created. Data Inserted to table KP45193.
+2024-05-18 02:22:48 MySQL Database Connected!
+2024-05-18 02:22:55 MySQL Database Connected!
+2024-05-18 02:23:02 MySQL Database Connected!
+2024-05-18 02:23:12 MySQL Database Connected!
+2024-05-18 02:23:20 MySQL Database Connected!
+2024-05-18 02:23:39 MySQL Database Connected!
+2024-05-18 02:23:47 MySQL Database Connected!
+2024-05-18 02:23:49 MySQL Database Connected!
+2024-05-18 02:23:49 Using Properties.
+2024-05-18 02:23:49 Found the Database KP45193.
+2024-05-18 02:23:49 User Created. Data Inserted to table KP45193.
+2024-05-18 02:23:49 Using Properties.
+2024-05-18 02:23:49 Found the Database KP45193asxas.
+2024-05-18 02:23:49 Using Properties.
+2024-05-18 02:23:49 Found the Database KPO.
+2024-05-18 02:23:49 Error querying use database KPO.
+2024-05-18 02:36:25 MySQL Database Connected!
+2024-05-18 02:36:27 MySQL Database Connected!
+2024-05-18 02:36:27 Using Properties.
+2024-05-18 02:36:27 Found the Database KP45193.
+2024-05-18 02:36:27 User Created. Data Inserted to table KP45193.
+2024-05-18 02:36:27 Using Properties.
+2024-05-18 02:36:27 Found the Database KP45193.
+2024-05-18 02:37:21 MySQL Database Connected!
+2024-05-18 02:37:22 MySQL Database Connected!
+2024-05-18 02:37:22 Using Properties.
+2024-05-18 02:37:22 Found the Database KP45193.
+2024-05-18 02:38:04 MySQL Database Connected!
+2024-05-18 02:38:06 MySQL Database Connected!
+2024-05-18 02:38:06 Using Properties.
+2024-05-18 02:38:06 Found the Database KP45193.
+2024-05-18 02:38:06 Using Properties.
+2024-05-18 02:38:06 Found the Database KP45193.
+2024-05-18 02:38:06 Using Properties.
+2024-05-18 02:38:06 Found the Database KP45193.
+2024-05-18 02:41:32 MySQL Database Connected!

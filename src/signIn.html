@@ -6,9 +6,23 @@
     <title>Sign-In</title>
     <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
+    <script type="module" src="/js/signin.js"></script>
+    <link rel = "stylesheet" href = "/css/signin.css">
 </head>
 <body>
     <div id="root-container">
+        <div id="main-container">
+            <img id="crs-logo" src="/Images/KPs logo.png"></img>
+            <p id="crs-para">Central Reservation System</p>
+            <div id="input-container">
+                <p id="detail-p">Username</p>
+                <input id="Username" class="detail-input" placeholder="Username*" type="username" required>
+                <p id="detail-p">Password</p>
+                <input id="password" class="detail-input" placeholder="Password*" type="password" required>
+                <button class="signin-button" id="signin">Sign In</button><br>
+                <a id="forgot-password" href="/forgot-password">Forgot Password?</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

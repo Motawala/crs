@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const {con, writeJSON, createDB, validatePropertyID} = require("../controllers/register")
+const {createUser} = require("../controllers/user")
 //Redirects the user to the home page
 router.get('/', function(req,res){
     res.render('index',{title:'CRS'});
@@ -50,6 +51,6 @@ router.get('/users', (req, res) => {
 router.post('/storePropertyDetails', writeJSON)
 router.post('/createDB', createDB)
 router.post('/validatePropertyID', validatePropertyID)
-
+router.post("/createUser", createUser)
 
 module.exports = router

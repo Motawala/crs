@@ -11,7 +11,7 @@ var con = mysql.createConnection({
   
 con.connect(function(err) {
     if (err) throw err;
-    const log = timestamp + "MySQL Database Connected!\n"
+    const log = timestamp + " MySQL Database Connected!\n"
     fs.writeFile("database.log", log, { flag: 'a' }, function(err) {
         if (err) {
             console.error("Error writing to log file: ", err);
@@ -91,12 +91,10 @@ const createDB = async (req, res) =>{
                 })
             }
         })
-
-       
-
         return res.status(200).json({
             success: true,
-            message: "Database " + dbName + " create successfully!"
+            message: "Database " + dbName + " create successfully!",
+            data:response
         })
     }catch(error){
         return res.status(500).json({
@@ -109,25 +107,59 @@ const createDB = async (req, res) =>{
 
 const validatePropertyID = async (req, res) =>{
     try{
-        const propertyID = req.body
-        const filename = propertyID + ".json"
-        fs.readdir(filename, (err, result) =>{
+        const {propertyID} = req.body
+        const useQuery = "USE properties;"
+        const sqlQuery = "SELECT * from property_id WHERE propertyID = (?);"
+        var response;
+        con.query(useQuery, function(err, result){
             if(err){
-                console.error("File not found", err)
+                console.error("Error in finding the Database: ", err);
             }else{
-                console.log("File Found")
+                const log = timestamp +" Using Properties.\n"
+                fs.writeFile("database.log", log, { flag: 'a' }, function(err) {
+                    if (err) {
+                        console.error("Error writing to log file: ", err);
+                    }
+                });
             }
         })
-        return res.status(200).json({
-            success: true,
-            message: "File Found in the Directory"
+        con.query(sqlQuery, [propertyID], function(err, result, fields){
+            if(err){
+                console.error("Error Finding the property ID in the table")
+            }else{
+                const log = timestamp +" Found the Database " + propertyID + ".\n"
+                response = result
+                fs.writeFile("database.log", log, { flag: 'a' }, function(err) {
+                    if (err) {
+                        console.error("Error writing to log file: ", err);
+                    }
+                });
+                if(result.length >= 1){
+                    if(result[0].propertyID == propertyID){
+                        return res.status(200).json({
+                            success: true,
+                            message: propertyID,
+                        })
+                    }
+                }else{
+                    return res.status(500).json({
+                        success: false,
+                        message: "Error finding the Database, server"
+                    })
+                }
+            }
         })
+      
     }catch(error){
         return res.status(500).json({
             success: false,
-            message: "Error finding the file, server"
+            message: "Error finding the Database, server"
         })
     }
 }
 
-module.exports = {writeJSON, createDB, validatePropertyID}
+
+
+
+
+module.exports = {writeJSON, createDB, validatePropertyID, con}

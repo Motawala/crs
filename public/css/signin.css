@@ -1,5 +1,6 @@
 body{
     background-color: rgb(168, 3, 3);
+    background: linear-gradient(to bottom right, rgba(139, 0, 0, 0.8), transparent); /* Dark red color (RGB: 139, 0, 0) */
 }
 
 #root-container{
@@ -27,14 +28,13 @@ body{
 
 #crs-logo{
     position: relative;
-    height: 15%;
-    width: 25%;
+    height: 35%;
+    width: 40%;
 }
 
 #input-container{
     width: 100%;
     height:60%;
-    margin:auto;
     align-items: center;
     justify-content: center;
     align-content: center;
@@ -58,7 +58,7 @@ body{
 }
 
 
-.create-button{
+.signin-button{
     height: 10%;
     width: 25%;
     align-self: left;
@@ -66,11 +66,34 @@ body{
     border-radius: 5px;
     border: none;
     font-weight: bold;
-    margin:20px 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 20px;
     color: whitesmoke;
 }
 
-.create-button:hover{
+.signin-button:hover{
     background-color: rgb(76, 173, 211);
+}
+
+#crs-para{
+    font-size: 40px;
+    color: rgb(80, 49, 4);
+    font-weight: bold;
+    font-family: Impact, fantasy;
+    font-style: italic;
+}
+
+#forgot-password{
+    font-size: 20px;
+    color: rgb(36, 136, 36);
+    font-weight: bold;
+    font-family: Trebuchet MS, sans-serif;
+}
+
+#forgot-password:hover{
+    font-size: 20px;
+    color: rgb(85, 84, 8);
+    font-weight: bold;
+    font-family: Trebuchet MS, sans-serif;
 }
