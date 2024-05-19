@@ -1,6 +1,6 @@
 var mysql = require('mysql');
-const bodyParser = require('body-parser');
-const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+const date = new Date();
+const timestamp = date.toLocaleString() + ":-";
 var fs = require('fs')
 
 var con = mysql.createConnection({
