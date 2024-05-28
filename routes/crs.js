@@ -1,7 +1,10 @@
 const express = require('express')
 const router = express.Router();
 const {con, writeJSON, createDB, validatePropertyID} = require("../controllers/register")
-const {createUser, login} = require("../controllers/user")
+const {createUser, login, userData} = require("../controllers/user")
+const {isAuth} = require('../middleware/isAuth')
+const {sendEmail, generateVerificationCode, verifyCode} = require("../controllers/email")
+
 //Redirects the user to the home page
 router.get('/', function(req,res){
     res.render('index',{title:'CRS'});
@@ -21,6 +24,26 @@ router.get('/register', function(req,res){
 router.get('/signIn', function(req,res){
     try{
         res.render('signIn',{title:"Sign-In"})
+    }catch(err){
+        return res.status(500).json({
+            message: err
+        })
+    }
+})
+
+router.get('/dashboard', isAuth, function(req,res){
+    try{
+        res.render('dashboard',{title:"dashboard"})
+    }catch(err){
+        return res.status(500).json({
+            message: err
+        })
+    }
+})
+
+router.get('/forgot', function(req,res){
+    try{
+        res.render('forgot',{title:"Forgot Passowrd"})
     }catch(err){
         return res.status(500).json({
             message: err
@@ -53,4 +76,7 @@ router.post('/createDB', createDB)
 router.post('/validatePropertyID', validatePropertyID)
 router.post("/createUser", createUser)
 router.post("/login", login)
+router.post('/userData', userData)
+router.post('/sendVerificationEmail', generateVerificationCode)
+router.post('/verifyCode', verifyCode)
 module.exports = router

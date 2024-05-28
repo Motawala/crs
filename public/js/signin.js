@@ -1,3 +1,12 @@
+const homebutton = document.getElementById('home-button');
+if(homebutton){
+    homebutton.addEventListener('click', function(){
+        window.location.href = "/"
+    })
+}
+
+
+
 const signin = document.getElementById('signin-button');
 if(signin){
     signin.addEventListener('click', (event) =>{
@@ -24,6 +33,7 @@ async function login(){
                 var validUser = await validateUser(data)
                 if(validUser == true){
                     //Authenticate user
+                    window.location.href = "/dashboard"
                 }else{
                     alert("Invalid Username or Password")
                 }

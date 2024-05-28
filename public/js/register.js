@@ -1,3 +1,10 @@
+const homebutton = document.getElementById('home-button');
+if(homebutton){
+    homebutton.addEventListener('click', function(){
+        window.location.href = "/"
+    })
+}
+
 //This is an event handler for next button in Property detail div.
 const nextButton = document.getElementById("next-button")
 nextButton.addEventListener('click', function(){

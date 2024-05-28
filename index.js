@@ -6,8 +6,23 @@ const port = 5000;
 const userRoutes = require('./routes/crs');
 const consolidate = require('consolidate')
 const bodyParser = require('body-parser');
+const session = require('express-session')
+const {con} = require("./controllers/register")
+const cookieParser = require("cookie-parser");
 
 
+app.use(cookieParser());
+app.set('trust proxy', 1) // trust first proxy
+
+app.use(session({
+  key: 'session_cookie_name',
+  secret: 'your_secret_key',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 1000 * 60 * 60 // 1 hour
+  }
+}));
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -30,3 +45,7 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
 
+
+
+
+module.exports = session;

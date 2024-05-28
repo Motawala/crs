@@ -8,73 +8,9 @@ Creating the table for user information:
     -> password VARCHAR(255));
 
 
-
-const createUser = async (req, res) =>{
-    try{
-        const {data} = req.body;
-        const insertQuery = "INSERT INTO users (propertyID, firstname, lastname, username, email, password) VALUES (?, ?, ?, ?, ?, ?)";
-        const useQuery = "Use (?);"
-        con.query(sqlQuery, [data["Property ID"]], function(err, result){
-        if (err){
-            console.error("Error Creating the Database, Req made: ", err)
-        }else{
-            con.query(useQuery, function(err, result){
-                if(err){
-                    console.error("Error Using the Database, Req made: ", err)
-                    const message = " Error querying use database ${data['Property ID']}.\n"
-                    log(message)
-                }else{
-                    const message = timestamp +" Using Database ${data['Property ID']}.\n"
-                    fs.writeFile("database.log", log, { flag: 'a' }, function(err) {
-                        if (err) {
-                            console.error("Error writing to log file: ", err);
-                            const message = " Error writing to the file.\n"
-                            log(message)
-                        }
-                    });
-
-                    con.query(insertQuery, [data["Property ID"], data["First Name"], data["Last Name"], 
-                        data["Username"], data["Email"], data["Password"]], (err, result) => {
-                        if(err){
-                            console.log(err)
-                            const message = " Error inserting the user data.\n"
-                            log(message);
-                        }else{
-                            
-                            fs.writeFile("database.log", log, { flag: 'a' }, function(err) {
-                                if (err) {
-                                    console.error("Error writing to log file: ", err);
-                                    const message = " Error writing to the file.\n"
-                                    log(message)
-                                }else{
-                                    const message = timestamp +" Data Inserted to table ${data['Property ID']}.\n"
-                                    log(message)
-                                }
-                            });
-                        }
-                    })
-                }
-            })
-            return res.status(500).json({
-                success: false,
-                message: "${data['Username']} User Created Successfully, server"
-            })
-        }
-    })
-    }catch(error){
-        return res.status(500).json({
-            success: false,
-            message: "Error Creating the User, server"
-        })
-    }
-}
+CREATE TABLE verification (
+    code INT
+);
 
 
-async function log(message){
-    const log = timestamp + message
-    fs.writeFile("database.log", log, { flag: 'a' }, function(err) {
-        if (err) {
-            console.error("Error writing to log file: ", err);
-        }
-    });
-}
+

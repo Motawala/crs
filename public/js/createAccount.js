@@ -1,3 +1,10 @@
+const homebutton = document.getElementById('home-button');
+if(homebutton){
+    homebutton.addEventListener('click', function(){
+        window.location.href = "/"
+    })
+}
+
 const createButton = document.getElementById('create-button');
 if(createButton){
     createButton.addEventListener('click', (event) =>{
@@ -19,7 +26,6 @@ async function getAccountInfo(){
         var checkID = await validatePropertyID(propertyID.value)
         if(checkID == true){
             if(firstname.value != "" && lastname.value != "" && username.value != "" && email.value != "" && password.value != "" && confirmPassword.value != "" && (password.value == confirmPassword.value)){
-                console.log(propertyID, username.value, email.value, password.value, confirmPassword.value)
                 const data = {
                     "Property ID": propertyID.value,
                     "First Name": firstname.value,
@@ -29,10 +35,10 @@ async function getAccountInfo(){
                     "Password": password.value,
                 }
                 const createAccount = storeUser(data)
-                if(storeUser){
+                if(createAccount == true){
                     alert("Account Created Successfully.")
                 }else{
-                    alert("Failed to Create the Account.")
+                    //alert("Username already exist")
                 }
             }else{
                 alert('Check User Details.')
@@ -90,7 +96,11 @@ async function storeUser(data){
             console.log("User Created Successfully.")
             return true
         }else{
+            if(response.status == 409){
+                alert("Username Already Exist")
+            }
             console.log("Failed to Created the User.")
+           
             return false
         }
     }catch(error){

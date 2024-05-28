@@ -68,11 +68,29 @@ body{
     border-radius: 5px;
     border: none;
     font-weight: bold;
-    margin:20px;
+    margin-top:20px;
+    margin-left:0px;
     font-size: 20px;
     color: whitesmoke;
 }
 
 .create-button:hover{
     background-color: rgb(76, 173, 211);
+}
+
+.home-button{
+    margin: 10px 10px 10px 10px;
+    height: 10%;
+    width: 20%;
+    align-self: left;
+    background-color: #477034;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+.home-button:hover{
+    background-color: #213518;
 }

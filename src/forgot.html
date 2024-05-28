@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Sign-In</title>
+    <title>Create Account</title>
     <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
-    <script type="module" src="/js/signin.js"></script>
-    <link rel = "stylesheet" href = "/css/signin.css">
+    <script type="module" src="/js/forgot.js"></script>
+    <link rel = "stylesheet" href = "/css/forgot.css">
 </head>
 <body>
     <div id="root-container">
@@ -20,12 +20,12 @@
                 <input id="property-id" class="detail-input" placeholder="Property ID*" type="property-id" required>
                 <p id="detail-p">Username</p>
                 <input id="username" class="detail-input" placeholder="Username*" type="username" required>
-                <p id="detail-p">Password</p>
-                <input id="password" class="detail-input" placeholder="Password*" type="password" required>
-                <button class="signin-button" id="signin-button">Sign In</button><br>
-                <a id="forgot-password" href="/forgot">Forgot Password?</a>
+                <p id="detail-p">Email</p>
+                <input id="email" class="detail-input" placeholder="Email*" type="email" required>
+                <button class="send-button" id="send-button">Send Code</button><br>
+                <input id="code" class="detail-input" placeholder="Enter Code*" type="code" required>
+                <button class="verify-button" id="verify-button">Verify</button><br>
             </div>
         </div>
     </div>
 </body>
-</html>
