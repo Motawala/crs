@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Create Account</title>
+    <title>Reset Password</title>
+    <link rel="icon" type="image/x-icon" href="/Images/login_logo.png" class="back-logo"> 
     <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
     <script type="module" src="/js/forgot.js"></script>
@@ -25,6 +26,16 @@
                 <button class="send-button" id="send-button">Send Code</button><br>
                 <input id="code" class="detail-input" placeholder="Enter Code*" type="code" required>
                 <button class="verify-button" id="verify-button">Verify</button><br>
+            </div>
+            <div id="reset-form">
+                <p id="reset-para">Reset Password</p>
+                <p id="detail-p">New Password</p>
+                <input id="new-password" class="detail-input" placeholder="New Password*" type="password" required>
+                <img src="/Images/eye-close.png" class="eye-button" id="eye-button">
+                <p id="detail-p">Confirm New Password</p>
+                <input id="confirm-new-password" class="detail-input" placeholder="Confirm New Password*" type="password" required>
+                <img src="/Images/eye-close.png" class="eye-button2" id="eye-button2">
+                <button class="reset-button" id="reset-button">Reset</button><br>
             </div>
         </div>
     </div>

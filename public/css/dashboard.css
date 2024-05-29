@@ -1,0 +1,92 @@
+body{
+}
+
+#header{
+    background-color: whitesmoke; /* Choose your background color */
+    color: red; /* Choose your text color */
+    padding: 20px 0; /* Adjust padding as needed */
+    text-align: left; /* Center align content horizontally */
+    position: fixed; /* Fixed positioning */
+    top: 0; /* Attach to the top of the viewport */
+    left: 0; /* Align to the left side of the viewport */
+    width: 100%; /* Full width */
+    z-index: 1000; /* Ensure the header appears above other content */
+    padding:10px;
+    font-family: Verdana;
+    font-style: italic;
+    display: flex;
+    flex-direction: row;
+}
+
+#header-details{
+    margin:0px 0px 0px 20px;
+    border-left: 2px groove grey;
+    padding:0px 0px 0px 20px;
+    color: rgb(82, 82, 82);
+    font-family: Gill Sans, sans-serif	;
+    display: flex;
+    flex-direction: row;
+}
+
+#property-name{
+    position: relative;
+    margin-top:7%;
+}
+
+#property-id{
+    position: relative;
+    margin-top:7%;
+    padding:10px;
+    color: darkgrey;
+    font-family: Helvetica, sans-serif	;
+}
+
+.account-logo{
+    height: 3%;
+    width: 3%;
+    padding:15px 70px 0px 0px;
+    cursor: pointer;
+    margin-left:auto;
+}
+
+
+.account-logo:hover{
+    color: grey;
+}
+
+.account-content {
+    display: none;
+    position: absolute;
+    background-color: #9c9c9c;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right:0;
+    margin-right:30px;
+    top: calc(80% + 10px); /* Position the dropdown below the button */
+}
+
+/* Links inside the dropdown */
+.account-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.account-content a:hover {
+    background-color: rgb(116, 111, 111);
+}
+
+/* Dropdown arrow */
+.account-content::after {
+    content: '';
+    position: absolute;
+    top: -20px; /* Position the arrow above the dropdown content */
+    right: 70px; /* Adjust the arrow's position as needed */
+    border-width: 10px; /* Set the size of the arrow */
+    border-style: solid;
+    border-color: transparent transparent #9c9c9c transparent; /* Match the background color of the dropdown content */
+}
+

@@ -114,3 +114,13 @@ body{
 .home-button:hover{
     background-color: #213518;
 }
+
+.eye-button {
+    position: absolute;
+    right: 25%;
+    top: 81.8%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 25px;
+    height: 20px;
+}

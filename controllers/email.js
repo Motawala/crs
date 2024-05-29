@@ -1,8 +1,9 @@
 const sendGrid = require('@sendgrid/mail');
 const { con } = require("../controllers/register");
 const {log} = require("../controllers/user")
+const fs = require('fs')
 
-sendGrid.setApiKey("<Send Grid API>")
+sendGrid.setApiKey("<SendGrid API Key>")
 
 
 async function sendEmail(){
@@ -29,6 +30,20 @@ const generateVerificationCode = async (req, res) => {
 
         const code = generateRandomNumber(100000, 999999)
         const storeCodeQuery = "INSERT INTO verification (code) VALUES (?);"
+        const filename = propertyID + '.json'
+        let from;
+        fs.readFile(filename, 'utf-8', (err, data) => {
+            if (err) {
+                console.error("Error reading the file:", err);
+                return;
+            }
+            try {
+                const detail = JSON.parse(data);
+                from = detail['data']['Property Email']
+            } catch (jsonErr) {
+                console.error("Error parsing JSON:", jsonErr);
+            }
+        });
         con.query(useQuery, (err, results, fields) => {
             if (err) {
                 console.error("Error Using the Database, Req made: ", err);

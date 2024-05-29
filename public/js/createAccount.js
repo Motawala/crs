@@ -13,6 +13,56 @@ if(createButton){
     })
 }
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    const togglePasswordVisibility = (eyeButtonId, passwordInputId) => {
+        const eyeButton = document.getElementById("eye-button");
+        const passwordInput = document.getElementById("password");
+
+        eyeButton.addEventListener('mousedown', () => {
+            passwordInput.type = 'text';
+            eyeButton.src = '/Images/eye-open.png'; // Change to the open eye icon
+        });
+
+        eyeButton.addEventListener('mouseup', () => {
+            passwordInput.type = 'password';
+            eyeButton.src = '/Images/eye-close.png'; // Change back to the closed eye icon
+        });
+
+        eyeButton.addEventListener('mouseleave', () => {
+            passwordInput.type = 'password';
+            eyeButton.src = '/Images/eye-close.png'; // Change back to the closed eye icon
+        });
+    };
+
+    togglePasswordVisibility('eye-button-new', 'new-password');
+    togglePasswordVisibility('eye-button-confirm', 'confirm-new-password');
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const togglePasswordVisibility = (eyeButtonId, passwordInputId) => {
+        const eyeButton = document.getElementById("eye-button2");
+        const passwordInput = document.getElementById("confirm-password");
+
+        eyeButton.addEventListener('mousedown', () => {
+            passwordInput.type = 'text';
+            eyeButton.src = '/Images/eye-open.png'; // Change to the open eye icon
+        });
+
+        eyeButton.addEventListener('mouseup', () => {
+            passwordInput.type = 'password';
+            eyeButton.src = '/Images/eye-close.png'; // Change back to the closed eye icon
+        });
+
+        eyeButton.addEventListener('mouseleave', () => {
+            passwordInput.type = 'password';
+            eyeButton.src = '/Images/eye-close.png'; // Change back to the closed eye icon
+        });
+    };
+
+    togglePasswordVisibility('eye-button-new', 'new-password');
+    togglePasswordVisibility('eye-button-confirm', 'confirm-new-password');
+});
+
 
 async function getAccountInfo(){
     const propertyID = document.getElementById('property-id');

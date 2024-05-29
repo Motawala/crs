@@ -12,13 +12,118 @@ if(sendbutton){
     })
 }
 
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const togglePasswordVisibility = (eyeButtonId, passwordInputId) => {
+        const eyeButton = document.getElementById("eye-button");
+        const passwordInput = document.getElementById("new-password");
+
+        eyeButton.addEventListener('mousedown', () => {
+            passwordInput.type = 'text';
+            eyeButton.src = '/Images/eye-open.png'; // Change to the open eye icon
+        });
+
+        eyeButton.addEventListener('mouseup', () => {
+            passwordInput.type = 'password';
+            eyeButton.src = '/Images/eye-close.png'; // Change back to the closed eye icon
+        });
+
+        eyeButton.addEventListener('mouseleave', () => {
+            passwordInput.type = 'password';
+            eyeButton.src = '/Images/eye-close.png'; // Change back to the closed eye icon
+        });
+    };
+
+    togglePasswordVisibility('eye-button-new', 'new-password');
+    togglePasswordVisibility('eye-button-confirm', 'confirm-new-password');
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const togglePasswordVisibility = (eyeButtonId, passwordInputId) => {
+        const eyeButton = document.getElementById("eye-button2");
+        const passwordInput = document.getElementById("confirm-new-password");
+
+        eyeButton.addEventListener('mousedown', () => {
+            passwordInput.type = 'text';
+            eyeButton.src = '/Images/eye-open.png'; // Change to the open eye icon
+        });
+
+        eyeButton.addEventListener('mouseup', () => {
+            passwordInput.type = 'password';
+            eyeButton.src = '/Images/eye-close.png'; // Change back to the closed eye icon
+        });
+
+        eyeButton.addEventListener('mouseleave', () => {
+            passwordInput.type = 'password';
+            eyeButton.src = '/Images/eye-close.png'; // Change back to the closed eye icon
+        });
+    };
+
+    togglePasswordVisibility('eye-button-new', 'new-password');
+    togglePasswordVisibility('eye-button-confirm', 'confirm-new-password');
+});
+
+
 const verifybutton = document.getElementById('verify-button');
 if(verifybutton){
-    verifybutton.addEventListener('click', function(){
-        verifyCode()
+    verifybutton.addEventListener('click', async function(){
+        const verified = await verifyCode()
+        if(verified == true){
+            showResetInputs()
+        }else{
+            alert("User Not Verified.")
+        }
+        
     })
 }
 
+const resetButton = document.getElementById("reset-button")
+if(resetButton){
+    resetButton.addEventListener('click', async function(){
+        const validateResetUpdate = await resetPassword()
+        if(validateResetUpdate == true){
+            alert("Password Updated Successfully.")
+            window.location.href = "/signIn";
+        }else{
+            alert("Password not updated.")
+        }
+    })
+}
+
+async function resetPassword(){
+    const newPassword = document.getElementById('new-password');
+    const confirmNewPassword = document.getElementById('confirm-new-password');
+    const propertyID = document.getElementById('property-id');
+    const username = document.getElementById('username');
+    if(newPassword.value != "" && confirmNewPassword.value != "" && newPassword.value == confirmNewPassword.value && propertyID.value != "" && username.value != ""){
+        const validPropertyID = await validatePropertyID(propertyID.value)
+        if(validPropertyID == true){
+            const data = {
+                "Property ID": propertyID.value,
+                "Username": username.value,
+                "New Password": newPassword.value
+            }
+            const validReset = resetPasswordRequest(data)
+            return true
+        }else{
+            alert("Invalid Property ID")
+            return false
+        }
+    }else{
+        alert('Invalid Password Details')
+        return false
+    }
+}
+
+
+
+function showResetInputs(){
+    const resetForm = document.getElementById('reset-form');
+    const inputContainer = document.getElementById("input-container")
+    resetForm.style.display = "block"
+    inputContainer.style.display = "none"
+
+}
 
 async function verifyCode(){
     const propertyID = document.getElementById('property-id');
@@ -31,10 +136,12 @@ async function verifyCode(){
         const validateCode = await validateVerificationCode(data)
         if(validateCode == true){
             alert("Verification Successful, Reset Password Now.")
+            return true
             /////Start from Here
             //window.location.href = "/"
         }else{
             alert("Invalid Verification Code.")
+            return false
         }
     }
 }
@@ -71,6 +178,35 @@ async function createEmailMessage(){
         }
     }else{
         alert("Enter the details")
+    }
+}
+
+async function resetPasswordRequest(resetData){
+    try {
+        const response = await fetch("/resetPassword", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ resetData }),
+        });
+
+        const data = await response.json(); // Parse JSON response
+
+        if (response.ok) {
+            if (data.success) {
+                return true;
+            } else {
+                console.error('Error:', data.message);
+                return false;
+            }
+        } else {
+            console.error('Bad response from server');
+            return false;
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
     }
 }
 

@@ -67,7 +67,6 @@ const login = async (req, res) => {
         const { data } = req.body;
         const useQuery = `USE ${data["Property ID"]}`;
         const sqlQuery = `SELECT * FROM users WHERE username = (?)`;
-        console.log(req.session)
         
         con.query(useQuery, (err) => {
             if (err) {
@@ -99,6 +98,7 @@ const login = async (req, res) => {
                             if (passwordCompare) {
                                 req.session.isAuth = true;
                                 req.session.username = data["Username"]
+                                console.log(req.session.username)
                                 const message = ` User ${data["Username"]} logged in.\n`
                                 log(message)
                                 return res.status(200).json({
@@ -205,7 +205,70 @@ const userData = async (req, res) => {
             })
         })
     }catch(error){
+        return res.status(500).json({
+            success: false,
+            message: "Error finding the record."
+        });
+    }
+}
 
+
+const resetPassword = async (req, res) => {
+    const data = req.body
+    const propertyID = data['resetData']['Property ID']
+    const username = data['resetData']['Username']
+    const useQuery = `USE \`${propertyID}\``
+    const salt = await bcrypt.genSalt(10);
+    const encrypt = await bcrypt.hash(data['resetData']["New Password"], salt);
+    const updateQuery = 'UPDATE users SET password = ? WHERE username = ?'
+    try{
+        con.query(useQuery, (err, results, fields) => {
+            if (err) {
+                console.error("Error Using the Database, Req made: ", err);
+                const message = ` Error querying use database ${propertyID}.\n`;
+                log(message);
+                return res.status(500).json({
+                    success: false,
+                    message: "Error using the database."
+                });
+            } else {
+                const message = ` Using ${propertyID}.\n`;
+                log(message);
+                con.query(updateQuery, [encrypt, username], (err, results, fields) =>{
+                    if(err){
+                        console.error("Error Updating the Password: ", err);
+                        const message = ` Error Updateing the Password.\n`;
+                        log(message);
+                        return res.status(500).json({
+                            success: false,
+                            message: "Error updating the Password."
+                        });
+                    }else{
+                        if(results){
+                            const message = ` User ${username}'s Password Updated.\n`;
+                            log(message);
+                            return res.status(200).json({
+                                success: true,
+                                message: "Password Updated"
+                            });
+                        }else{
+                            console.error("Error Updating the Password: ", err);
+                            const message = ` Error Updateing the Password.\n`;
+                            log(message);
+                            return res.status(500).json({
+                                success: false,
+                                message: "Error updating the Password."
+                            });
+                        }
+                    }
+                })
+            }
+        })
+    }catch(error){
+        return res.status(500).json({
+            success: false,
+            message: "Error Updating the Password."
+        });
     }
 }
 
@@ -220,4 +283,4 @@ async function log(message) {
 }
 
 
-module.exports = { createUser, login, userData, log };
+module.exports = { createUser, login, userData, log, resetPassword };
