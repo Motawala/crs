@@ -1,0 +1,18 @@
+{
+  "data": {
+    "Property Name": "Daysinn & Suites Albany",
+    "Property ID": "KP45193",
+    "Property Email": "daysinnalbany1@gmail.com",
+    "Property Address Line 1": "105 Center Dr",
+    "Property City": "Brunswick",
+    "Property State": "Georgia",
+    "Property Zip-Code": "31520",
+    "Number of Rooms": "3",
+    "Number of Room Types": "2"
+  },
+  "roomData": {
+    "101": "NDD1",
+    "102": "NDD1",
+    "103": "NDD2"
+  }
+}

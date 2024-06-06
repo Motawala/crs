@@ -1,11 +1,12 @@
 Creating the table for user information:
-    create table users (
-    -> propertyID VARCHAR(255),
-    -> firstname VARCHAR(255),
-    -> lastname VARCHAR(255),
-    -> username VARCHAR(255) PRIMARY KEY,
-    -> email VARCHAR(255),
-    -> password VARCHAR(255));
+    CREATE TABLE users (
+    propertyID VARCHAR(255),
+    firstname VARCHAR(255),
+    lastname VARCHAR(255),
+    username VARCHAR(255) PRIMARY KEY,
+    email VARCHAR(255),
+    password VARCHAR(255)
+);
 
 
 CREATE TABLE verification (

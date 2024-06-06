@@ -1,17 +1,23 @@
 body{
 }
 
+#root{
+    width: 100%;
+    height: 100%;
+}
+
 #header{
-    background-color: whitesmoke; /* Choose your background color */
-    color: red; /* Choose your text color */
-    padding: 20px 0; /* Adjust padding as needed */
+    position: relative;
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(247, 229, 70)); /* Choose your background color */
+    color: rgb(31, 83, 6); /* Choose your text color */
+    padding: 0px 0px; /* Adjust padding as needed */
     text-align: left; /* Center align content horizontally */
     position: fixed; /* Fixed positioning */
     top: 0; /* Attach to the top of the viewport */
     left: 0; /* Align to the left side of the viewport */
     width: 100%; /* Full width */
     z-index: 1000; /* Ensure the header appears above other content */
-    padding:10px;
+    padding:0px 0px 0px 10px;
     font-family: Verdana;
     font-style: italic;
     display: flex;
@@ -19,7 +25,7 @@ body{
 }
 
 #header-details{
-    margin:0px 0px 0px 20px;
+    margin:10px 0px 0px 25px;
     border-left: 2px groove grey;
     padding:0px 0px 0px 20px;
     color: rgb(82, 82, 82);
@@ -30,28 +36,41 @@ body{
 
 #property-name{
     position: relative;
-    margin-top:7%;
+    font-size: 25px;
+    color: rgb(230, 129, 129); /* Choose your text color */
 }
 
 #property-id{
     position: relative;
-    margin-top:7%;
     padding:10px;
-    color: darkgrey;
+    color: rgb(49, 47, 47);
     font-family: Helvetica, sans-serif	;
 }
 
-.account-logo{
+.dropdown{
     height: 3%;
-    width: 3%;
-    padding:15px 70px 0px 0px;
+    width: 5%;
+    padding:15px 15px 15px 15px;
     cursor: pointer;
     margin-left:auto;
+    margin-right:20px;
+    margin-top:25px;
+    background-color: rgb(238, 238, 238);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    box-shadow: 0px 8px 16px 0px rgba(214, 211, 211, 0.2);
+    border: 2px groove black;
+    border-radius: 5px;
 }
 
+.dropdown button{
+    align-self: center;
+}
 
-.account-logo:hover{
-    color: grey;
+.dropdown:hover .account-content{
+    display: block;
 }
 
 .account-content {
@@ -60,10 +79,11 @@ body{
     background-color: #9c9c9c;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 10;
     right:0;
     margin-right:30px;
-    top: calc(80% + 10px); /* Position the dropdown below the button */
+    top: calc(80% + 5px); /* Position the dropdown below the button */
+    text-align: center;
 }
 
 /* Links inside the dropdown */
@@ -79,14 +99,100 @@ body{
     background-color: rgb(116, 111, 111);
 }
 
-/* Dropdown arrow */
-.account-content::after {
-    content: '';
-    position: absolute;
-    top: -20px; /* Position the arrow above the dropdown content */
-    right: 70px; /* Adjust the arrow's position as needed */
-    border-width: 10px; /* Set the size of the arrow */
-    border-style: solid;
-    border-color: transparent transparent #9c9c9c transparent; /* Match the background color of the dropdown content */
+
+#header2{
+    position: relative;
+    background-image: linear-gradient(to left, rgba(255,0,0,0), rgb(241, 222, 43)); 
+    color: rgb(31, 83, 6); /* Choose your text color */
+    height: 3%;
+    position: fixed; /* Fixed positioning */
+    top: 9%; /* Attach to the top of the viewport */
+    left: 0; /* Align to the left side of the viewport */
+    width: 100%; /* Full width */
+    padding:10px;
+    font-family: Verdana;
+    display: flex;
+    flex-direction: row;
+    z-index: 0;
+    align-items: center;
+    text-align: center;
 }
 
+#header2 button{
+    margin:20px;
+    padding: 5px;
+    font-size: 80%;
+    width:8%;
+}
+
+
+
+#arrival{
+    background-color: rgb(190, 190, 190);
+    position: relative;
+    height: calc(60vh - 142px); /* Adjust to be the full height minus the headers */
+    width: 10%;
+    box-sizing: border-box; /* Ensure padding does not affect width */
+    margin-top: 135px; /* Adjust to provide space below fixed headers */
+    overflow-y: scroll;
+    border-top: 2px groove black;
+    flex:1;
+}
+
+#departure{
+    background-color: rgb(190, 190, 190);
+    position: relative;
+    height: calc(40vh - 0px); /* Adjust to be the full height minus the headers */
+    width: 10%;
+    box-sizing: border-box; /* Ensure padding does not affect width */
+    overflow-y: scroll;
+    border-top: 2px groove black;
+    flex:1;
+}
+
+#arrival-header{
+    position: relative;
+    width: 100%;
+    height: 5%;
+    margin-top: 0px;
+    background-color: whitesmoke;
+    align-items: center;
+    text-align: center;
+}
+
+#arrival-p{
+    margin: 0;
+    padding: 0;
+    font-family: Trebuchet MS, sans-serif;
+    font-weight: bold;
+}
+
+#departure-header{
+    position: relative;
+    width: 100%;
+    height: 5%;
+    margin-top: 0px;
+    background-color: whitesmoke;
+    align-items: center;
+    text-align: center;
+}
+
+#departure-p{
+    margin: 0;
+    padding: 0;
+    font-family: Trebuchet MS, sans-serif;
+    font-weight: bold;
+}
+
+#room-container{
+    background-color: whitesmoke;
+    position: relative;
+    height: calc(100vh - 142px); /* Adjust to be the full height minus the headers */
+    width: calc(100% - 10%);;
+    box-sizing: border-box; /* Ensure padding does not affect width */
+    overflow-y: scroll;
+    border-top: 2px groove black;
+    float: right;
+    margin-top: calc(-100vh + 142px);
+    overflow-x: scroll;
+}

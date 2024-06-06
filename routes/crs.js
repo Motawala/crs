@@ -1,10 +1,12 @@
 const express = require('express')
 const router = express.Router();
 const {con, writeJSON, createDB, validatePropertyID} = require("../controllers/register")
-const {createUser, login, userData, resetPassword} = require("../controllers/user")
+const {createUser, login, userData, resetPassword, logout} = require("../controllers/user")
 const {isAuth} = require('../middleware/isAuth')
 const {sendEmail, generateVerificationCode, verifyCode} = require("../controllers/email")
 const {getPropertyDetails} = require("../controllers/details")
+var fs = require('fs');
+
 
 //Redirects the user to the home page
 router.get('/', function(req,res){
@@ -32,7 +34,7 @@ router.get('/signIn', function(req,res){
     }
 })
 
-router.get('/dashboard', function(req,res){
+router.get('/dashboard', isAuth, function(req,res){
     try{
         res.render('dashboard',{title:"dashboard"})
     }catch(err){
@@ -42,9 +44,27 @@ router.get('/dashboard', function(req,res){
     }
 })
 
+router.get('/getUsername', isAuth, function(req,res){
+    try{
+        const usr = req.session.username
+        const name = req.session.name
+        const propertyid = req.session.propertyid
+        const propertyName = req.session.propertyName
+        const totalRooms = req.session.totalRooms
+        const roomData = req.session.roomData
+        const propertyData = req.session.propertyData
+        res.json({usr, name, propertyid, propertyName, totalRooms, roomData, propertyData})
+    }catch(err){
+        return res.status(500).json({
+            message: err
+        })
+    }
+})
+
+
 router.get('/forgot', function(req,res){
     try{
-        res.render('forgot',{title:"Forgot Passowrd"})
+        res.render('forgot',{title:"Forgot Passowrd", username: req.session.username})
     }catch(err){
         return res.status(500).json({
             message: err
@@ -82,4 +102,6 @@ router.post('/sendVerificationEmail', generateVerificationCode)
 router.post('/verifyCode', verifyCode)
 router.post('/resetPassword', resetPassword)
 router.post('/getPropertyDetails', getPropertyDetails)
+router.post('/logout', logout)
+
 module.exports = router

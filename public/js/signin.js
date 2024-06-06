@@ -74,7 +74,7 @@ async function login(){
     }
 }
 
-
+let usr;
 async function validateUser(data){
     try {
         const response = await fetch("/login", {
@@ -86,7 +86,8 @@ async function validateUser(data){
         });
 
         const responsedata = await response.json(); // Parse JSON response
-
+        usr = (responsedata)
+        console.log(usr)
         if (response.ok) {
             console.log('Valid User'); // Access the data from the response
             return true;

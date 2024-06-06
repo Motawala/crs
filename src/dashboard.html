@@ -10,16 +10,40 @@
     <link rel = "stylesheet" href = "/css/dashboard.css">
 </head>
 <body>
-    <div id="header">
-        <h1 id="head-h1">KP's CRS</h1>
-        <div id="header-details">
-            <h2 id="property-name">Daysinn and Suites Albany,</h2>
-            <p id="property-id">Property ID: 45193</p>
+    <div id="root">
+        <div id="header">
+            <h1 id="head-h1">KP's CRS</h1>
+            <div id="header-details">
+                <h2 id="property-name"></h2>
+                <p id="property-id"></p>
+                <h2 id="user-name"></h2>
+            </div>
+            <div id="dropdown" class="dropdown">
+                <span>Settings</span>
+                <div class="account-content" id="account-content">
+                    <button class="settings-button" id="settings-button">Dashboard</button>
+                    <a href="#" id="logout-button">Logout</a>
+                    <a href="#">Settings</a>
+                </div>
+            </div>
         </div>
-        <img src="/Images/accountLogo.png" class="account-logo" id="account-logo">
-        <div class="account-content" id="account-content">
-            <a href="#">Logout</a>
-            <a href="#">Settings</a>
+        <div id="header2">
+            <button class="create-button" id="dashboard-button">Dashboard</button>
+            <button class="create-button" id="newReservation-button">New Reservation</button>
+            <button class="create-button" id="roomStatus-button">Room Status</button>
+        </div>
+        <div id="arrival">
+            <header id="arrival-header">
+                <p id="arrival-p">Arrivals</p>
+            </header>
+        </div>
+        <div id="departure">
+            <header id="departure-header">
+                <p id="departure-p">Departures</p>
+            </header>
+        </div>
+        <div id="room-container">
+
         </div>
     </div>
 </body>

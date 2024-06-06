@@ -67,7 +67,26 @@ const login = async (req, res) => {
         const { data } = req.body;
         const useQuery = `USE ${data["Property ID"]}`;
         const sqlQuery = `SELECT * FROM users WHERE username = (?)`;
-        
+        const propId = data['Property ID']
+        let propertyName;
+        const filename = propId + '.json'
+        let propertyDetail;
+        fs.readFile(filename, 'utf-8', (err, data) => {
+            if (err) {
+                console.error("Error reading the file:", err);
+                return;
+            }
+            try {
+                propertyDetail = JSON.parse(data);
+                req.session.propertyName = (propertyDetail['data']['Property Name'])
+                req.session.totalRooms = propertyDetail['data']['Number of Rooms']
+                req.session.roomData = propertyDetail['roomData']
+                req.session.propertyData = propertyDetail['data']
+                propertyName = propertyDetail['data']['Property Name']
+            } catch (jsonErr) {
+                console.error("Error parsing JSON:", jsonErr);
+            }
+        });
         con.query(useQuery, (err) => {
             if (err) {
                 console.error("Error Using the Database, Req made: ", err);
@@ -78,7 +97,7 @@ const login = async (req, res) => {
                     message: "Error using the database."
                 });
             } else {
-                const message = ` Using ${data['Property ID']}.\n`;
+                const message = ` Using property ${data['Property ID']}.\n`;
                 log(message);
             }
 
@@ -98,7 +117,8 @@ const login = async (req, res) => {
                             if (passwordCompare) {
                                 req.session.isAuth = true;
                                 req.session.username = data["Username"]
-                                console.log(req.session.username)
+                                req.session.name = result[0].firstname;
+                                req.session.propertyid = data['Property ID']
                                 const message = ` User ${data["Username"]} logged in.\n`
                                 log(message)
                                 return res.status(200).json({
@@ -272,6 +292,32 @@ const resetPassword = async (req, res) => {
     }
 }
 
+const logout = async (req,res)=>{
+    try{
+        const message = ` User ${req.session.username}'s logged out.\n`;
+        if(req.session.isAuth == true){
+            req.session.destroy.username;
+            req.session.destroy()
+            log(message);
+            return res.status(200).json({
+                success: true,
+                message:"logout successful"
+            })
+        }else{
+            return res.status(500).json({
+                success: false,
+                message: "Logout Unsuccessful, login first."
+            });
+        }
+    }catch(err){
+        const message = ` User ${req.session.username}'s not logged out.\n`;
+        return res.status(500).json({
+            success: false,
+            message: "Error Logging out user"
+        });
+    }
+}
+
 
 async function log(message) {
     const logMessage = timestamp + message;
@@ -283,4 +329,4 @@ async function log(message) {
 }
 
 
-module.exports = { createUser, login, userData, log, resetPassword };
+module.exports = { createUser, login, userData, log, resetPassword, logout};

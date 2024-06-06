@@ -1,0 +1,25 @@
+{
+  "data": {
+    "Property Name": "Hilton",
+    "Property ID": "HI45193",
+    "Property Email": "pkaran1100@gmail.com",
+    "Property Address Line 1": "105 Center Dr",
+    "Property City": "Brunswick",
+    "Property State": "Georgia",
+    "Property Zip-Code": "31520",
+    "Number of Rooms": "10",
+    "Number of Room Types": "3"
+  },
+  "roomData": {
+    "101": "ndd1",
+    "102": "ndd2",
+    "103": "ndd1",
+    "104": "ndd1",
+    "105": "ndd2",
+    "106": "ndd1",
+    "107": "ndd3",
+    "108": "ndd1",
+    "109": "ndd3",
+    "110": "ndd1"
+  }
+}
