@@ -3,7 +3,7 @@ const { con } = require("../controllers/register");
 const {log} = require("../controllers/user")
 const fs = require('fs')
 
-sendGrid.setApiKey("<SEND Grid API>")
+sendGrid.setApiKey("<SEND Grid API.>")
 
 
 async function sendEmail(){
