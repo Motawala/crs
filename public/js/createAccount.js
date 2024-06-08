@@ -84,7 +84,7 @@ async function getAccountInfo(){
                     "Email": email.value,
                     "Password": password.value,
                 }
-                const createAccount = storeUser(data)
+                const createAccount = await storeUser(data)
                 if(createAccount == true){
                     alert("Account Created Successfully.")
                 }else{

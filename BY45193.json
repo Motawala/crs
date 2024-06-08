@@ -1,0 +1,20 @@
+{
+  "data": {
+    "Property Name": "Baymont Inn",
+    "Property ID": "BY45193",
+    "Property Email": "karanp3898@gmail.com",
+    "Property Address Line 1": "1606 Central Avenue",
+    "Property City": "Albany",
+    "Property State": "New York",
+    "Property Zip-Code": "12205",
+    "Number of Rooms": "5",
+    "Number of Room Types": "2"
+  },
+  "roomData": {
+    "101": "SNK1",
+    "102": "SNK1",
+    "103": "SNK2",
+    "104": "SNK1",
+    "105": "SNK2"
+  }
+}

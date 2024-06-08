@@ -195,4 +195,10 @@ body{
     float: right;
     margin-top: calc(-100vh + 142px);
     overflow-x: scroll;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#fa{
 }

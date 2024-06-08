@@ -298,7 +298,11 @@ async function writeData(data, roomData) {
 
         if (response.ok) {
             console.log("Data Written to the file");
-            createDatabase(data)
+            const databaseCreated = await createDatabase(data)
+            if(databaseCreated == true){
+                alert("Property Registered Successfully.")
+                window.location.href = '/'
+            }
         } else {
             console.error("Error from front writing data");
         }
@@ -322,8 +326,10 @@ async function createDatabase(data){
         })
         if (response.ok) {
             console.log("Database for " + data["Property Name"] + " " + data["Property ID"] + " created successfully!");
+            return true
         } else {
             console.error("Error Creating Database");
+            return false
         }
     } catch (error) {
         console.error("Error:", error);

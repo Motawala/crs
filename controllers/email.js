@@ -2,8 +2,9 @@ const sendGrid = require('@sendgrid/mail');
 const { con } = require("../controllers/register");
 const {log} = require("../controllers/user")
 const fs = require('fs')
+require('dotenv').config();
 
-sendGrid.setApiKey("<SEND Grid API.>")
+sendGrid.setApiKey(process.env.SENDGRID_API)
 
 
 async function sendEmail(){
@@ -15,7 +16,6 @@ async function sendEmail(){
     };
     try{
         await sendGrid.send(messageData);
-        console.log("Email Sent")
     }catch(error){
         console.log(error)
     }
@@ -171,8 +171,27 @@ async function sendVerificationEmail(code, email){
     const messageData = {
         to:email,
         from:"pkaran1100@gmail.com",
-        subject:"Verficiation code for Password Reset",
-        text:`Hello, \n Your Verification Code for Password Reset is: ${code}.\n`
+        subject:"KP's CRS: Verficiation code for Password Reset",
+        text:`Hello, \n Your Verification Code for Password Reset is: ${code}.\n`,
+        html: resetPasswordEmailTemplate(code)
+    };
+    try{
+        await sendGrid.send(messageData);
+        console.log("Email Sent")
+        const message = ` Verification Code sent to ${email} for Password Reset.\n`;
+        log(message)
+    }catch(error){
+        console.log(error)
+    }
+}
+
+async function sendCreateAccountEmail(propertyData){
+    const email = propertyData['Email']
+    const messageData = {
+        to:email,
+        from:"pkaran1100@gmail.com",
+        subject:"KPs CRS: New Account Created.",
+        html: createAccountTemplate(propertyData)
     };
     try{
         await sendGrid.send(messageData);
@@ -181,4 +200,43 @@ async function sendVerificationEmail(code, email){
         console.log(error)
     }
 }
-module.exports = {sendEmail, generateVerificationCode, verifyCode}
+
+
+function resetPasswordEmailTemplate(code){
+    const logo = '/getLogo'
+    const template = `
+        <h1>KP's Central Reservation System User Verification.</h1>
+        <p>Hello,</p>
+        <p>You are receiving this email because we received a password request for your account. Here is your verfification code:</p>
+        <div style="margin:auto; align-self:center; background-color:lightgrey; height:30px; width:100px; align-text:center;">
+            <p style="font-weight:bold; margin:auto; align-self:center;">${code}</p>
+        </div>
+        <p>If you did not request a password reset, no furthur action is required.</p>
+        <p>Regards,</p>
+        <p>KP's Central Reservation System</p>
+        <img src="/Images/KPs%20CRS.PNG" style="height:180px; width:200px"></img>`
+    return template
+        
+}
+
+function createAccountTemplate(data){
+    const firstname = data['First Name']
+    const lastname = data['Last Name']
+    const propertyID = data['Property ID']
+    const username = data['Username']
+    const template = `
+        <h1>Welcome to KP's Central Reservation System.</h1>
+        <p>Hello ${firstname} ${lastname},</p><br>
+        <p>You are receiving this email because your account is successfully created.</p>
+        <div style="margin:auto; align-self:center; background-color:lightgrey; height:80px; width:250px; align-text:center;">
+            <p style="font-weight:bold; margin:auto; align-self:center;">Username: ${username}</p>
+            <p style="font-weight:bold; margin:auto; align-self:center;">Property ID: ${propertyID}</p>
+        </div>
+        <p>Regards,</p>
+        <p>KP's Central Reservation System</p>
+        <img src="/Images/KPs%20CRS.PNG" style="height:180px; width:200px"></img>`
+    return template
+        
+}
+
+module.exports = {sendEmail, generateVerificationCode, verifyCode, sendCreateAccountEmail}

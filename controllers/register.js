@@ -2,11 +2,12 @@ var mysql = require('mysql');
 const date = new Date();
 const timestamp = date.toLocaleString() + ":-";
 var fs = require('fs')
+require('dotenv').config();
 
 var con = mysql.createConnection({
-    host: "localhost",
-    user:"root",
-    password:"Kp2992002",
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password:process.env.DB_PASSWORD,
     database:"kp45193"
 })
   
@@ -62,6 +63,15 @@ const createDB = async (req, res) =>{
         const useQuery = "USE properties";
         const insertPropertyID = "INSERT INTO property_ID (propertyID) VALUES (?);"
         const propertyID = jsonData["data"]['Property ID'];
+        const usePropertyDB = "USE " + propertyID
+        const createUserTable = `CREATE TABLE users (
+                                    propertyID VARCHAR(255),
+                                    firstname VARCHAR(255),
+                                    lastname VARCHAR(255),
+                                    username VARCHAR(255) PRIMARY KEY,
+                                    email VARCHAR(255),
+                                    password VARCHAR(255)
+                                );`
         con.query(sqlQuery, function(err, result){
             if (err){
                 console.error("Error Creating the Database, Req made: ", err)
@@ -88,15 +98,45 @@ const createDB = async (req, res) =>{
                                 console.error("Error writing to log file: ", err);
                             }
                         });
+                        con.query(usePropertyDB, function(err, result){
+                            if(err){
+                                console.error("Error creating the properties Database, Req made: ", err)
+                                const log = timestamp + ` Error creating the properties database for ${propertyID}.\n`
+                                fs.writeFile("database.log", log, { flag: 'a' }, function(err) {
+                                    if (err) {
+                                        console.error("Error writing to log file: ", err);
+                                    }
+                                });
+                            }else{
+                                const log = timestamp + ` Database created for and using ${propertyID}.\n`
+                                fs.writeFile("database.log", log, { flag: 'a' }, function(err) {
+                                    if (err) {
+                                        console.error("Error writing to log file: ", err);
+                                    }
+                                });
+                                con.query(createUserTable, function(err, results, fields){
+                                    if(err){
+                                        console.error("Error inserting the property id into the database, Req made: ", err)
+                                    }else{
+                                        const log = timestamp + ` User table created in the database ${propertyID}.\n`
+                                        fs.writeFile("database.log", log, { flag: 'a' }, function(err) {
+                                            if (err) {
+                                                console.error("Error writing to log file: ", err);
+                                            }
+                                        });
+                                        return res.status(200).json({
+                                            success: true,
+                                            message: "Database " + dbName + " create successfully!",
+                                        })
+                                    }
+                                })
+                            }
+                        })
                     }
                 })
             }
         })
-        return res.status(200).json({
-            success: true,
-            message: "Database " + dbName + " create successfully!",
-            data:response
-        })
+        
     }catch(error){
         return res.status(500).json({
             success: false,

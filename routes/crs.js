@@ -62,6 +62,8 @@ router.get('/getUsername', isAuth, function(req,res){
 })
 
 
+
+
 router.get('/forgot', function(req,res){
     try{
         res.render('forgot',{title:"Forgot Passowrd", username: req.session.username})
@@ -90,6 +92,8 @@ router.get('/users', (req, res) => {
         console.log("Database created");
       });
 });
+
+
 
 
 router.post('/storePropertyDetails', writeJSON)

@@ -9,14 +9,15 @@ const bodyParser = require('body-parser');
 const session = require('express-session')
 const {con} = require("./controllers/register")
 const cookieParser = require("cookie-parser");
+require('dotenv').config();
 
 
 app.use(cookieParser());
 app.set('trust proxy', 1) // trust first proxy
 
 app.use(session({
-  key: 'session_cookie_name',
-  secret: 'your_secret_key',
+  key: process.env.SESSION_COOKIE,
+  secret: process.env.SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
   cookie: {
@@ -25,6 +26,7 @@ app.use(session({
 }));
 
 app.use(express.static('public'));
+app.use('/images', express.static("Images"))
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,7 +44,7 @@ app.get("/", (req, res) => {
 app.use('/', userRoutes)
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at http://localhost:${process.env.PORT}`);
 });
 
 

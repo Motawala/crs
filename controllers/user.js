@@ -6,6 +6,7 @@ const { con } = require("../controllers/register");
 const bcrypt = require("bcryptjs");
 const isAuth = require("../middleware/isAuth")
 const session = require("../index")
+const {sendCreateAccountEmail} = require("../controllers/email")
 
 const createUser = async (req, res) => {
     try {
@@ -47,6 +48,7 @@ const createUser = async (req, res) => {
                 
                 const message = `User Created. Data Inserted to table ${data['Property ID']}.\n`;
                 log(message);
+                sendCreateAccountEmail(data)
                 return res.status(200).json({
                     success: true,
                     message: `${data['Username']} User Created Successfully.`
