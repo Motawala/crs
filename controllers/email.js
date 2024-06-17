@@ -227,14 +227,14 @@ function createAccountTemplate(data){
     const template = `
         <h1>Welcome to KP's Central Reservation System.</h1>
         <p>Hello ${firstname} ${lastname},</p><br>
-        <p>You are receiving this email because your account is successfully created.</p>
+        <p>You are receiving this email because you have created an account with KP's Central Reservation System.</p>
         <div style="margin:auto; align-self:center; background-color:lightgrey; height:80px; width:250px; align-text:center;">
             <p style="font-weight:bold; margin:auto; align-self:center;">Username: ${username}</p>
             <p style="font-weight:bold; margin:auto; align-self:center;">Property ID: ${propertyID}</p>
         </div>
         <p>Regards,</p>
         <p>KP's Central Reservation System</p>
-        <img src="/Images/KPs%20CRS.PNG" style="height:180px; width:200px"></img>`
+        <img src="http://localhost:5000/Images/KPs%20CRS.PNG" style="height:180px; width:200px"></img>`
     return template
         
 }

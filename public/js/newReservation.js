@@ -21,7 +21,7 @@ function createNewReservationDiv(){
         newReservationDiv.id = "newReservation-div"
         
         const closeIcon = createCloseIcon()
-        closeIcon.addEventListener('mosueover', () => {
+        closeIcon.addEventListener('mouseover', () => {
             console.log("Here")
             closeIcon.style.color = "lightcoral";
         });
@@ -163,4 +163,71 @@ function createAddressInput(){
     inputsDiv.appendChild(city)
     inputsDiv.appendChild(state)
     inputsDiv.appendChild(zipcode)
+    createSaveButton()
+}
+
+function createSaveButton(){
+    const inputsDiv = document.getElementById("newReservation-input-div")
+    const saveButton = document.createElement('button');
+    saveButton.style.position = "relative"
+    saveButton.style.width = "25%"
+    saveButton.style.height = "10%"
+    saveButton.style.backgroundColor = "lightgreen"
+    saveButton.style.border = 'groove lightgreen'
+    saveButton.style.color = "whitesmoke"
+    saveButton.style.marginTop = "20px"
+    saveButton.textContent = "Save"
+    saveButton.id = "newReservation-save-button"
+    saveButton.style.fontSize = "20px"
+    saveButton.style.cursor = "pointer"
+
+    const cancelButton = document.createElement('button');
+    cancelButton.style.position = "relative"
+    cancelButton.style.width = "25%"
+    cancelButton.style.height = "10%"
+    cancelButton.style.backgroundColor = "whitesmoke"
+    cancelButton.style.border = 'groove whitesmoke'
+    cancelButton.style.color = "black"
+    cancelButton.style.marginTop = "20px"
+    cancelButton.style.marginRight = "20px"
+    cancelButton.textContent = "Cancel"
+    cancelButton.id = "newReservation-cancel-button"
+    cancelButton.style.fontSize = "20px"
+    cancelButton.style.cursor = "pointer"
+
+    cancelButton.addEventListener('click', () => {
+        removeNewReservationDiv()
+    });
+    cancelButton.addEventListener('mouseover', () => {
+        cancelButton.style.backgroundColor = "#FFFAF0";
+    });
+    cancelButton.addEventListener('mouseout', () => {
+        cancelButton.style.backgroundColor = "whitesmoke";
+    });
+
+    saveButton.addEventListener('mouseover', () => {
+        saveButton.style.backgroundColor = "darkgreen";
+    });
+    saveButton.addEventListener('mouseout', () => {
+        saveButton.style.backgroundColor = "lightgreen";
+    });
+
+    saveButton.addEventListener('click', () => {
+        hideNewReservationInputs(inputsDiv)
+    });
+
+
+    inputsDiv.appendChild(cancelButton)
+    inputsDiv.appendChild(saveButton)
+}
+
+
+function hideNewReservationInputs(inputDiv){
+    const childrens = inputDiv.children
+    console.log(childrens)
+    for (let i = 0; i < childrens.length; i++) {
+        childrens[i].style.display = 'none';
+    }
+
+    
 }

@@ -34,6 +34,13 @@ function populateDivs(propertyData, roomDetails){
     }
 }
 
+const dashboardButton = document.getElementById('dashboard-button');
+if(dashboardButton){
+    dashboardButton.addEventListener('click', () => {
+        window.location.href = "/dashboard"
+    });
+}
+
 
 
 function createRoomDivs(roomNumber, roomType){

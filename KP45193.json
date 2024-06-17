@@ -7,12 +7,14 @@
     "Property City": "Brunswick",
     "Property State": "Georgia",
     "Property Zip-Code": "31520",
-    "Number of Rooms": "3",
+    "Number of Rooms": "5",
     "Number of Room Types": "2"
   },
   "roomData": {
     "101": "NDD1",
     "102": "NDD1",
-    "103": "NDD2"
+    "103": "NDD2",
+    "104": "NDD1",
+    "105": "NDD2"
   }
 }
